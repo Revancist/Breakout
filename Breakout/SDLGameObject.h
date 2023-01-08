@@ -11,7 +11,7 @@ public:
 	virtual void draw() override;
 	virtual void update() override;
 	virtual void clean() override;
-	virtual void onCollision(SDLGameObject* other, bool direction);
+	virtual void onCollision(SDLGameObject* other);
 	bool getEnabled() override { return enabled; }
 
 	Vector2D& getVelocity() { return m_velocity; }

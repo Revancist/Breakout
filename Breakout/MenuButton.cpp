@@ -49,6 +49,6 @@ void MenuButton::clean()
 	SDLGameObject::clean();
 }
 
-void MenuButton::onCollision(SDLGameObject* other, bool direction)
+void MenuButton::onCollision(SDLGameObject* other)
 {
 }

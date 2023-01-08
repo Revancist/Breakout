@@ -59,9 +59,10 @@ void Ball::clean()
 	SDLGameObject::clean();
 }
 
-void Ball::onCollision(SDLGameObject* other, bool direction)
+void Ball::onCollision(SDLGameObject* other)
 {
-	if (direction)
+	// Check direction of collision and bounce horizontally or vertically
+	if ((getPosition().getX() < other->getPosition().getX()) || ((getPosition().getX() + getWidth()) > other->getPosition().getX() + (other->getWidth())))
 	{
 		m_velocity.setX(m_velocity.getX() * -1);
 		m_acceleration.setX(m_acceleration.getX() * -1);

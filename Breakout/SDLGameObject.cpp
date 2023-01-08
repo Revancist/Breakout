@@ -40,6 +40,6 @@ void SDLGameObject::clean()
 {
 }
 
-void SDLGameObject::onCollision(SDLGameObject* other, bool direction)
+void SDLGameObject::onCollision(SDLGameObject* other)
 {
 }

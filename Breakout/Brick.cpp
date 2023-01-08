@@ -20,11 +20,8 @@ void Brick::clean()
 	SDLGameObject::clean();
 }
 
-void Brick::onCollision(SDLGameObject* other, bool direction)
+void Brick::onCollision(SDLGameObject* other)
 {
-	enabled = false;/*
-	m_position.setX(Game::Instance()->getWinWidth() + 1);
-	m_position.setY(Game::Instance()->getWinHeight() + 1);
-	m_width = 0;
-	m_height = 0;*/
+	// Disable the brick
+	enabled = false;
 }

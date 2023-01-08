@@ -34,6 +34,7 @@ void PlayState::update()
 		checkCollision(pBall, dynamic_cast<SDLGameObject*>(m_gameObjects[i]));
 	}	
 
+	// Check if the ball fell below the screen (game over)
 	if (pBall->getPosition().getY() >= Game::Instance()->getWinHeight())
 	{
 		Game::Instance()->getStateMachine()->pushState(new GameOverState());
@@ -74,21 +75,12 @@ bool PlayState::onEnter()
 	m_gameObjects.push_back(pPlayer);
 	m_gameObjects.push_back(pBall);
 
-	//#TODO: make another for loop for number of rows
-
-	for (int i = 0; i < Game::Instance()->getWinWidth() / 100; i++)
+	for (int y = 0; y < rowNum; y++)
 	{
-		m_gameObjects.push_back(new Brick(LoaderParams(i * 100, 0, 100, 20, "brick")));
-	}
-
-	for (int i = 0; i < Game::Instance()->getWinWidth() / 100; i++)
-	{
-		m_gameObjects.push_back(new Brick(LoaderParams(i * 100, 20, 100, 20, "brick")));
-	}
-
-	for (int i = 0; i < Game::Instance()->getWinWidth() / 100; i++)
-	{
-		m_gameObjects.push_back(new Brick(LoaderParams(i * 100, 40, 100, 20, "brick")));
+		for (int i = 0; i < Game::Instance()->getWinWidth() / 100; i++)
+		{
+			m_gameObjects.push_back(new Brick(LoaderParams(i * 100, y*20, 100, 20, "brick")));
+		}
 	}
 
 	return true;
@@ -136,20 +128,8 @@ bool PlayState::checkCollision(SDLGameObject* pA, SDLGameObject* pB)
 	// Check if A and B are collided
 	if ((leftB <= rightA) && (rightB >= leftA) && (bottomB >= topA) && (topB <= bottomA))
 	{
-		// Direction of collision: True = horizontal, False = vertical
-		bool direction = false;
-		
-		if ((pA->getPosition().getX() < pB->getPosition().getX()) || ((pA->getPosition().getX() + pA->getWidth()) > pB->getPosition().getX() + (pB->getWidth())))
-		{
-			direction = true;
-		}
-		
-		//#TODO: move above logic into onCollision().
-
-		//int direction = (pA->getPosition().getX() + pA->getWidth() / 2) - (pB->getPosition().getX() + pB->getWidth() / 2)
-
-		pA->onCollision(pB, direction);
-		pB->onCollision(pA, direction);
+		pA->onCollision(pB);
+		pB->onCollision(pA);
 
 		return true;
 	}

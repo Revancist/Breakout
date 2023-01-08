@@ -27,6 +27,9 @@ private:
 	static const std::string s_menuID;
 	std::vector<GameObject*> m_gameObjects;
 
+	// Number of brick rows to create.
+	int rowNum = 3;
+
 	Player* pPlayer = nullptr;
 	Ball* pBall = nullptr;
 };

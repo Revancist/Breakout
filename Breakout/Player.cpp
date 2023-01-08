@@ -34,6 +34,6 @@ void Player::clean()
 {
 }
 
-void Player::onCollision(SDLGameObject* other, bool direction)
+void Player::onCollision(SDLGameObject* other)
 {
 }
