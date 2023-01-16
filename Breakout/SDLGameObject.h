@@ -21,7 +21,6 @@ public:
 	int getWidth() { return m_width; }
 	int getHeight() { return m_height; }
 
-
 protected:
 
 	Vector2D m_position;

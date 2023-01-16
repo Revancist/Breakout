@@ -37,8 +37,8 @@ bool MenuState::onEnter()
 	}
 
 	// Create game objects from textures
-	GameObject* buttonPlay = new MenuButton(LoaderParams(100, 100, 400, 100, "playbutton"), s_menuToPlay);
-	GameObject* buttonExit = new MenuButton(LoaderParams(100, 300, 400, 100, "exitbutton"), s_exitFromMenu);
+	GameObject* buttonPlay = new MenuButton(LoaderParams(Game::Instance()->getWinWidth() / 2 - 200, Game::Instance()->getWinHeight() / 2 - 100, 400, 100, "playbutton"), s_menuToPlay);
+	GameObject* buttonExit = new MenuButton(LoaderParams(Game::Instance()->getWinWidth() / 2 - 200, Game::Instance()->getWinHeight() / 2 + 100, 400, 100, "exitbutton"), s_exitFromMenu);
 
 	// Add objects to the gameObject list
 	m_gameObjects.push_back(buttonPlay);

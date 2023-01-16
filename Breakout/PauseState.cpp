@@ -34,8 +34,8 @@ bool PauseState::onEnter()
 		return false;
 	}
 
-	GameObject* buttonResume = new MenuButton(LoaderParams(200, 100, 200, 80, "resumebutton"), s_resumePlay);
-	GameObject* buttonMenu = new MenuButton(LoaderParams(200, 300, 200, 80, "menubutton"), s_pauseToMain);
+	GameObject* buttonResume = new MenuButton(LoaderParams(Game::Instance()->getWinWidth() / 2 - 100, Game::Instance()->getWinHeight() / 2 - 80, 200, 80, "resumebutton"), s_resumePlay);
+	GameObject* buttonMenu = new MenuButton(LoaderParams(Game::Instance()->getWinWidth() / 2 - 100, Game::Instance()->getWinHeight() / 2 + 80, 200, 80, "menubutton"), s_pauseToMain);
 
 	m_gameObjects.push_back(buttonResume);
 	m_gameObjects.push_back(buttonMenu);

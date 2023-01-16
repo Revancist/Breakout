@@ -11,5 +11,7 @@ public:
 	virtual void update() override;
 	virtual void clean() override;
 	virtual void onCollision(SDLGameObject* other) override;
+
+	float baseAccel = 0.01;
 };
 

@@ -14,18 +14,13 @@ void Player::draw()
 
 void Player::update()
 {
-	// Set player velocity and get mouse position
-	m_velocity.setX(0);
-	int xTarget = InputHandler::Instance()->getMousePosition().getX();
+	// Get mouse position and clamp it so the bar dosen't go over the screen
+	float MousePos = InputHandler::Instance()->getMousePosition().getX() - (m_width / 2);
 
-	// Have player slowly follow the mouse
-	m_velocity.setX((xTarget - m_position.getX()) / 25);
+	MousePos = SDL_clamp(MousePos, 0, Game::Instance()->getWinWidth() - m_width);
 
-	// Stop sprite at the edge of the window
-	if (m_position.getX() > (Game::Instance()->getWinWidth() - m_width))
-	{
-		m_position.setX(Game::Instance()->getWinWidth() - m_width);
-	}
+	// Set player position to mouse position
+	m_position.setX(MousePos);
 
 	SDLGameObject::update();
 }
